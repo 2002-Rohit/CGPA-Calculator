@@ -1,19 +1,5 @@
-/******************************************************************************
-
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
-/*This C++ PROGRAM is developed by S M OHIDUL ALAM,and 
-special right is given to MobTutorial.com for educational purpose  */
-//Don't copy source code without permission
-
-
 #include <iostream>
 #include <stdlib.h>
-
 using namespace std;
 
 void calculateGPA();
@@ -25,7 +11,7 @@ int main()
     system("cls");
     int input;
     cout<<"--------------------------------------------------------------------------"<<endl;
-    cout<<"                    GPA & CGPA Calculator (Developed by Ohid)             "<<endl;
+    cout<<"                    GPA & CGPA Calculator                                 "<<endl;
     cout<<"--------------------------------------------------------------------------\n"<<endl;
     cout<<"            MENU:"<<endl;
     cout<<"                   1. Calculate GPA (Grade Point Average)"<<endl;
