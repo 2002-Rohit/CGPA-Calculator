@@ -1,82 +1,204 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+/*This C++ PROGRAM is developed by S M OHIDUL ALAM,and 
+special right is given to MobTutorial.com for educational purpose  */
+//Don't copy source code without permission
+
+
 #include <iostream>
-#include <iomanip>
+#include <stdlib.h>
 
 using namespace std;
 
-int main() {
-    int numCourses;
-    cout << "Enter the number of courses: ";
-    cin >> numCourses;
+void calculateGPA();
+void calculateCGPA();
+void method();
 
-    double totalGradePoints = 0.0;
-    double totalCredits = 0.0;
+int main()
+{
+    system("cls");
+    int input;
+    cout<<"--------------------------------------------------------------------------"<<endl;
+    cout<<"                    GPA & CGPA Calculator (Developed by Ohid)             "<<endl;
+    cout<<"--------------------------------------------------------------------------\n"<<endl;
+    cout<<"            MENU:"<<endl;
+    cout<<"                   1. Calculate GPA (Grade Point Average)"<<endl;
+    cout<<"                   2. Calculate CGPA (Cummulative Grade Point Average)"<<endl;
+    cout<<"                   3. Method that is applied here for calclating GPA & CGPA"<<endl;
+    cout<<"                   4. Exit Application"<<endl;
+    cout<<"--------------------------------------------------------------------------"<<endl;
+    sub:
+    cout<<"Enter your choice: ";
+    cin>>input;
+    switch(input)
+    {
+        case 1:
+                calculateGPA();
+                break;
 
-    for (int i = 1; i <= numCourses; i++) {
-        char grade;
-        int credits;
-
-        cout << "Enter grade for course " << i << " (A, A-, B+, B, B-, C+, C, C-, D+, D, D-, F): ";
-        cin >> grade;
-
-        cout << "Enter credit hours for course " << i << ": ";
-        cin >> credits;
-
-        double gradePoint;
-
-        switch (grade) {
-            case 'A':
-                gradePoint = 4.0;
+        case 2:
+                calculateCGPA();
                 break;
-            case 'A-':
-                gradePoint = 3.7;
+        case 3:
+                method();
                 break;
-            case 'B+':
-                gradePoint = 3.3;
+        case 4:
+                exit(EXIT_SUCCESS);
                 break;
-            case 'B':
-                gradePoint = 3.0;
-                break;
-            case 'B-':
-                gradePoint = 2.7;
-                break;
-            case 'C+':
-                gradePoint = 2.3;
-                break;
-            case 'C':
-                gradePoint = 2.0;
-                break;
-            case 'C-':
-                gradePoint = 1.7;
-                break;
-            case 'D+':
-                gradePoint = 1.3;
-                break;
-            case 'D':
-                gradePoint = 1.0;
-                break;
-            case 'D-':
-                gradePoint = 0.7;
-                break;
-            case 'F':
-                gradePoint = 0.0;
-                break;
-            default:
-                cout << "Invalid grade entered for course " << i << ". Please enter a valid grade." << endl;
-                i--; // Decrement i to re-enter the grade for the current course.
-                continue;
-        }
-
-        totalGradePoints += gradePoint * credits;
-        totalCredits += credits;
+        default:
+            cout<<"You have entered wrong input.Try again!\n"<<endl;
+            goto sub;
+            break;
     }
-
-    if (totalCredits > 0) {
-        double cgpa = totalGradePoints / totalCredits;
-        cout << fixed << setprecision(2);
-        cout << "Your CGPA is: " << cgpa << endl;
-    } else {
-        cout << "No valid courses entered. Cannot calculate CGPA." << endl;
-    }
-
-    return 0;
 }
+
+void calculateGPA()
+{
+    int q;
+    system("cls");
+    cout<<"-------------- GPA Calculating -----------------"<<endl;
+    cout<<" How many subject's points do you want to calculate? : ";
+    cin>>q;
+
+    float credit [q];
+    float point [q];
+
+    cout<<endl;
+    for(int i=0;i<q;i++)
+    {
+        cout<<"Enter the credit for the subject "<<i+1<<": ";
+        cin>>credit[i];
+        cout<<endl;
+        cout<<"Enter the point of the subject "<<i+1<<": ";
+        cin>>point[i];
+        cout<<"-----------------------------------\n\n"<<endl;
+    }
+
+    float sum=0;
+    float tot;
+    for(int j=0;j<q;j++)
+    {
+        tot=credit[j]*point[j];
+        sum=sum+tot;
+    }
+
+    float totCr=0;
+    for(int k=0;k<q;k++)
+    {
+        totCr=totCr+credit[k];
+    }
+
+    cout<<"\n\n\nTotal Points: "<<sum<<" . Total Credits: "<<totCr<<" .Total GPA: "<<sum/totCr<<" ."<<endl;
+
+
+    sub:
+    int inmenu;
+    cout<<"\n\n\n1. Calculate Again"<<endl;
+    cout<<"2. Go Back to Main Menu"<<endl;
+    cout<<"3. Exit This App \n\n"<<endl;
+    cout<<"Your Input: "<<endl;
+    cin>>inmenu;
+
+    switch(inmenu)
+    {
+        case 1:
+                calculateGPA();
+                break;
+        case 2:
+                main();
+                break;
+        case 3:
+                exit(EXIT_SUCCESS);
+
+        default:
+              cout<<"\n\nYou have Entered Wrong Input!Please Choose Again!"<<endl;
+              goto sub;
+    }
+}
+void calculateCGPA()
+{
+    system("cls");
+    int l;
+    cout<<"-------------- CGPA Calculating -----------------\n\n"<<endl;
+    cout<<"How many semester results do you want input? :";
+    cin>>l;
+    cout<<"\n\n"<<endl;
+    float semrs[l];
+    int i;
+
+    for(i=0;i<l;i++)
+    {
+        cout<<" Enter Semester "<<i+1<<" Result(GPA): ";
+        cin>>semrs[i];
+        cout<<"\n"<<endl;
+    }
+
+    float semtot=0;
+    for(int j=0;j<l;j++)
+    {
+        semtot=semtot+semrs[j];
+    }
+
+    cout<<"******** Your CGPA is "<<semtot/l<<" **********"<<endl;
+
+
+    sub:
+    int inmenu;
+    cout<<"\n\n\n1. Calculate Again"<<endl;
+    cout<<"2. Go Back to Main Menu"<<endl;
+    cout<<"3. Exit This App \n\n"<<endl;
+    cout<<"Your Input: "<<endl;
+    cin>>inmenu;
+
+    switch(inmenu)
+    {
+        case 1:
+                calculateCGPA();
+                break;
+        case 2:
+                main();
+                break;
+        case 3:
+                exit(EXIT_SUCCESS);
+
+        default:
+              cout<<"\n\nYou have Entered Wrong Input!Please Choose Again!"<<endl;
+              goto sub;
+    }
+
+}
+
+void method()
+{
+    system("cls");
+    cout<<"--------------- Method of Calculating GPA & CGPA ---------------\n\n"<<endl;
+    cout<<" GPA= Sum of (Credit*Point) / total of credits \n"<<endl;
+    cout<<" CGPA=  Sum of GPA / number of semesters "<<endl;
+    cout<<"-----------------------------------------------------------------\n\n"<<endl;
+
+    sub:
+    int inmenu;
+    cout<<"1. Go Back to Main Menu"<<endl;
+    cout<<"2. Exit This App \n\n"<<endl;
+    cout<<"Your Input: "<<endl;
+    cin>>inmenu;
+
+    switch(inmenu)
+    {
+        case 1:
+                main();
+                break;
+        case 2:
+                exit(EXIT_SUCCESS);
+
+        default:
+              cout<<"\n\nYou have Entered Wrong Input!Please Choose Again!"<<endl;
+              goto sub;
+    }
+};
